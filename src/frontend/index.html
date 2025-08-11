@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEFENDER DETECTIVE // Black Ice Protocol</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <span class="logo-icon">🛡️</span>
+                <h1>DEFENDER DETECTIVE</h1>
+                <span class="logo-subtitle">// Black Ice Protocol</span>
+            </div>
+            <div class="security-status" id="securityStatus">
+                <div class="status-indicator" id="statusIndicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">INITIALIZING</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Security Overview Panel -->
+                <div class="panel security-overview">
+                    <div class="panel-header">
+                        <h2>🔒 Security Overview</h2>
+                        <div class="panel-controls">
+                            <button class="btn btn-danger" id="lockdownBtn">LOCK EVERYTHING</button>
+                        </div>
+                    </div>
+                    <div class="panel-content">
+                        <div class="security-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Security Level</span>
+                                <span class="metric-value" id="securityLevel">GREEN</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Lockdown Status</span>
+                                <span class="metric-value" id="lockdownStatus">INACTIVE</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Protected Folders</span>
+                                <span class="metric-value" id="protectedFoldersCount">0</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Active Threats</span>
+                                <span class="metric-value" id="activeThreatsCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Threat Monitor Panel -->
+                <div class="panel threat-monitor">
+                    <div class="panel-header">
+                        <h2>🚨 Threat Monitor</h2>
+                        <div class="panel-controls">
+                            <button class="btn btn-secondary" id="refreshThreatsBtn">Refresh</button>
+                        </div>
+                    </div>
+                    <div class="panel-content">
+                        <div class="threat-list" id="threatList">
+                            <div class="threat-item">
+                                <span class="threat-time">Initializing...</span>
+                                <span class="threat-type">System</span>
+                                <span class="threat-description">Loading threat monitor</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Protected Folders Panel -->
+                <div class="panel protected-folders">
+                    <div class="panel-header">
+                        <h2>📁 Protected Folders</h2>
+                        <div class="panel-controls">
+                            <button class="btn btn-primary" id="addFolderBtn">Add Folder</button>
+                        </div>
+                    </div>
+                    <div class="panel-content">
+                        <div class="folder-list" id="folderList">
+                            <div class="folder-item">
+                                <span class="folder-path">No folders protected</span>
+                                <button class="btn btn-small btn-danger" style="display: none;">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Monitor Panel -->
+                <div class="panel system-monitor">
+                    <div class="panel-header">
+                        <h2>🖥️ System Monitor</h2>
+                    </div>
+                    <div class="panel-content">
+                        <div class="system-metrics">
+                            <div class="metric">
+                                <span class="metric-label">CPU Usage</span>
+                                <span class="metric-value" id="cpuUsage">--</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Memory Usage</span>
+                                <span class="metric-value" id="memoryUsage">--</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Network Status</span>
+                                <span class="metric-value" id="networkStatus">ONLINE</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Process Count</span>
+                                <span class="metric-value" id="processCount">--</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Console Output -->
+            <div class="panel console-output">
+                <div class="panel-header">
+                    <h2>💻 Security Console</h2>
+                    <div class="panel-controls">
+                        <button class="btn btn-secondary" id="clearConsoleBtn">Clear</button>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div class="console" id="console">
+                        <div class="console-line">
+                            <span class="console-time">[SYSTEM]</span>
+                            <span class="console-message">DEFENDER DETECTIVE // Black Ice Protocol initialized</span>
+                        </div>
+                        <div class="console-line">
+                            <span class="console-time">[SYSTEM]</span>
+                            <span class="console-message">Security systems online</span>
+                        </div>
+                        <div class="console-line">
+                            <span class="console-time">[SYSTEM]</span>
+                            <span class="console-message">Threat monitoring active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Warning Modal -->
+        <div class="modal" id="warningModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="warningTitle">Warning</h3>
+                    <button class="modal-close" id="closeWarningBtn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p id="warningMessage">A security warning has been triggered.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="acknowledgeWarningBtn">Acknowledge</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Folder Modal -->
+        <div class="modal" id="addFolderModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Add Protected Folder</h3>
+                    <button class="modal-close" id="closeAddFolderBtn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="folderPath">Folder Path:</label>
+                        <input type="text" id="folderPath" placeholder="C:\path\to\folder" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-secondary" id="browseFolderBtn">Browse</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" id="cancelAddFolderBtn">Cancel</button>
+                    <button class="btn btn-primary" id="confirmAddFolderBtn">Add Folder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 

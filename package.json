@@ -1,0 +1,56 @@
+{
+  "name": "defender-detective-black-ice",
+  "version": "1.0.0",
+  "description": "DEFENDER DETECTIVE // Black Ice Protocol - Advanced Source Code Protection System",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "dist": "npm run build:win"
+  },
+  "keywords": [
+    "security",
+    "protection",
+    "defense",
+    "monitoring",
+    "encryption"
+  ],
+  "author": "PlayNexus Security Team",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.1.7",
+    "ps-list": "^7.2.0",
+    "systeminformation": "^5.21.24"
+  },
+  "build": {
+    "appId": "com.playnexus.defenderdetective",
+    "productName": "DEFENDER DETECTIVE // Black Ice Protocol",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

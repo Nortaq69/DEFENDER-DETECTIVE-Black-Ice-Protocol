@@ -1,0 +1,20 @@
+directories:
+  output: dist
+  buildResources: build
+appId: com.playnexus.defenderdetective
+productName: DEFENDER DETECTIVE // Black Ice Protocol
+files:
+  - filter:
+      - src/**/*
+      - assets/**/*
+      - node_modules/**/*
+win:
+  target: nsis
+  icon: assets/icon.ico
+  requestedExecutionLevel: requireAdministrator
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+electronVersion: 28.0.0
